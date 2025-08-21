@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
+    "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.540.0",
     "radix-ui": "^1.4.3",
     "react": "^19.0.0",
@@ -26,6 +27,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "prettier": "^3.6.2",
     "vite": "^6.2.0"
   }
 }
