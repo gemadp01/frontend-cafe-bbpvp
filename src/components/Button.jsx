@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 const button = cva(
-  "py-2 px-5 rounded hover:bg-bgColor-2 hover:text-secondary",
+  "py-2 px-5 rounded hover:bg-bgColor-2 hover:text-secondary cursor-pointer",
   {
     variants: {
       color: {
