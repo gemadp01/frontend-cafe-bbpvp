@@ -68,10 +68,10 @@ function Header() {
 
         <div className="hidden md:flex md:space-x-1">
           <Button>
-            <a href="#">Login</a>
+            <Link to="/login">Login</Link>
           </Button>
           <Button color="secondary">
-            <a href="#">Sign up</a>
+            <Link to="/register">Sign up</Link>
           </Button>
         </div>
       </div>
