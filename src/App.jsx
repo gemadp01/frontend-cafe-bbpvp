@@ -7,6 +7,9 @@ import Layout from "./components/Layout";
 import Coba from "./pages/Coba";
 import FindCafePage from "./pages/FindCafePage";
 import HomePage from "./pages/HomePage";
+import AboutUsPage from "./pages/AboutUsPage";
+import { Contact } from "lucide-react";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const location = useLocation();
@@ -20,8 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/find-cafe" element={<FindCafePage />} />
-          <Route path="/about" element={"Coba"} />
-          <Route path="/contact" element={"Coba"} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Layout>
 

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "./Button";
+import { Link, NavLink } from "react-router-dom";
+import clsx from "clsx";
 
 function Header() {
   const [open, setOpen] = useState(false);
+
+  const navLinkClass = ({ isActive }) =>
+    clsx("text-gray-700", isActive && "text-primary font-bold");
 
   return (
     <header className="shadow-2xl fixed top-0 left-0 right-0 h-24 bg-bgColor-1 flex p-4 items-center md:justify-center">
@@ -14,24 +19,24 @@ function Header() {
           {/* Menu list (Desktop) */}
           <ul className="hidden md:flex md:space-x-4 md:items-center md:justify-center">
             <li className="">
-              <a href="#" className="text-primary font-bold ">
+              <NavLink to="/" end className={navLinkClass}>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="md:hover:font-bold md:hover:text-primary">
+              <NavLink to="/find-cafe" className={navLinkClass}>
                 Find a Cafe
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="md:hover:font-bold md:hover:text-primary">
+              <NavLink to="/about" className={navLinkClass}>
                 About us
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="md:hover:font-bold md:hover:text-primary">
+              <NavLink to="/contact" className={navLinkClass}>
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
 
