@@ -10,10 +10,10 @@ import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import { Contact } from "lucide-react";
 import ContactPage from "./pages/ContactPage";
+import CafeDetailPage from "./pages/CafeDetailPage";
 
 function App() {
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
 
   return (
     <>
@@ -25,6 +25,7 @@ function App() {
           <Route path="/find-cafe" element={<FindCafePage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/cafe-detail/:id" element={<CafeDetailPage />} />
         </Routes>
       </Layout>
 

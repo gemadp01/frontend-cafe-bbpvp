@@ -1,4 +1,4 @@
-function LoginPage() {
+const LoginPage = () => {
   return (
     <div className="contain py-16">
       <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
@@ -75,6 +75,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;

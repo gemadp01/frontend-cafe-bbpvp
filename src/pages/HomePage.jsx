@@ -1,7 +1,6 @@
 import Button from "../components/Button";
-import Layout from "../components/Layout";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <>
       <section
@@ -63,6 +62,6 @@ function HomePage() {
       </section>
     </>
   );
-}
+};
 
 export default HomePage;
