@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "./Button";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import clsx from "clsx";
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const navLinkClass = ({ isActive }) =>
     clsx("text-gray-700", isActive && "text-primary font-bold");
@@ -67,10 +68,14 @@ function Header() {
         </nav>
 
         <div className="hidden md:flex md:space-x-1">
-          <Button>
+          <Button
+            color={location.pathname === "/login" ? "primary" : "secondary"}
+          >
             <Link to="/login">Login</Link>
           </Button>
-          <Button color="secondary">
+          <Button
+            color={location.pathname === "/register" ? "primary" : "secondary"}
+          >
             <Link to="/register">Sign up</Link>
           </Button>
         </div>

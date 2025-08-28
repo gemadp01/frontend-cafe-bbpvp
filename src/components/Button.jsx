@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import clsx from "clsx";
 
 const button = cva(
   "py-2 px-5 rounded hover:bg-bgColor-2 hover:text-secondary cursor-pointer",
@@ -7,7 +8,8 @@ const button = cva(
       color: {
         primary: "bg-bgColor-2 text-secondary",
         secondary: "border border-primary text-primary",
-        active: "bg-bgColor-2 text-secondary",
+        sidebarItem: "bg-bgColor-1 text-primary",
+        active: "bg-bgColor-2 text-secondary rounded",
       },
       size: {
         sm: "text-sm",
@@ -22,8 +24,12 @@ const button = cva(
   }
 );
 
-function Button({ color, size, children }) {
-  return <button className={button({ color, size })}>{children}</button>;
+function Button({ className, color, size, children }) {
+  return (
+    <button className={clsx(button({ color, size }), className)}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;

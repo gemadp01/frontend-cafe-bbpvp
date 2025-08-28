@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "leaflet/dist/leaflet.css";
 @font-face {
   font-family: "MyFont";
   src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");

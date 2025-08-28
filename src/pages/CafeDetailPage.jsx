@@ -1,8 +1,12 @@
+import Layout from "../components/Layout";
+
 const CafeDetailPage = () => {
   return (
-    <div>
-      <h1>Cafe Detail Page</h1>
-    </div>
+    <Layout>
+      <div>
+        <h1>Cafe Detail Page</h1>
+      </div>
+    </Layout>
   );
 };
 
