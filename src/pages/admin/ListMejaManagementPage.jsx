@@ -1,6 +1,7 @@
 import { SearchIcon } from "lucide-react";
 import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const ListMejaManagementPage = () => {
   return (
@@ -8,9 +9,11 @@ const ListMejaManagementPage = () => {
       title="List Meja Management"
       description="Daftar meja yang tersedia"
       rightSection={
-        <Button color="primary" size="lg">
-          Tambah Data Meja
-        </Button>
+        <Link to="/admin/list-meja/create">
+          <Button color="primary" size="lg">
+            Tambah Data Meja
+          </Button>
+        </Link>
       }
     >
       <div className="w-full flex items-center justify-center min-h-full p-2">
@@ -32,7 +35,7 @@ const ListMejaManagementPage = () => {
                 </div>
                 <div>
                   <select className="border border-gray-300 rounded-lg px-4 py-2  w-full sm:w-auto">
-                    <option disabled>Filter Status</option>
+                    <option value="">Filter Status</option>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                   </select>
@@ -84,7 +87,7 @@ const ListMejaManagementPage = () => {
                         <div className="h-10 w-10 flex-shrink-0">
                           <img
                             className="h-10 w-10 rounded-full object-cover"
-                            src=""
+                            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
                             alt=""
                           />
                         </div>

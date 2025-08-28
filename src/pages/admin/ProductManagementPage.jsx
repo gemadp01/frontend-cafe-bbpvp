@@ -1,6 +1,7 @@
 import { SearchIcon } from "lucide-react";
 import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const ProductManagementPage = () => {
   return (
@@ -8,9 +9,11 @@ const ProductManagementPage = () => {
       title="Product Management"
       description="Daftar Product"
       rightSection={
-        <Button color="primary" size="lg">
-          Tambah Data Product
-        </Button>
+        <Link to="/admin/products/create">
+          <Button color="primary" size="lg">
+            Tambah Data Product
+          </Button>
+        </Link>
       }
     >
       <div className="w-full flex items-center justify-center min-h-full p-2">
@@ -31,8 +34,8 @@ const ProductManagementPage = () => {
                   />
                 </div>
                 <div>
-                  <select className="border border-gray-300 rounded-lg px-4 py-2  w-full sm:w-auto">
-                    <option disabled>Filter Category</option>
+                  <select className="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-auto">
+                    <option value="">Filter Category</option>
                     <option value="makanan">Makanan</option>
                     <option value="minuman">Minuman</option>
                   </select>
@@ -96,7 +99,7 @@ const ProductManagementPage = () => {
                         <div className="h-10 w-10 flex-shrink-0">
                           <img
                             className="h-10 w-10 rounded-full object-cover"
-                            src=""
+                            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
                             alt=""
                           />
                         </div>

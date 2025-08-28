@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Button from "../Button";
 import { NavLink } from "react-router-dom";
-import clsx from "clsx";
+// import clsx from "clsx";
 
 const SidebarItem = (props) => {
   const { children } = props;
@@ -86,7 +86,7 @@ export const AdminLayout = (props) => {
         {/* main */}
         <main className="flex flex-col p-4">
           {/* main header */}
-          <div className="flex justify-between items-center pb-4 border-b mb-8">
+          <div className="flex justify-between items-center pb-4 border-b mb-4">
             <div>
               <h1 className="font-bold text-4xl">{title}</h1>
               <p className="text-muted-foreground">{description}</p>
