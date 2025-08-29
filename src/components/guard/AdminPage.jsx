@@ -2,11 +2,10 @@
 import { Navigate } from "react-router-dom";
 
 export const AdminPage = (props) => {
-  //   const userSelector = useSelector((state) => state.user);
+  const token = localStorage.getItem("token");
 
-  //   if (userSelector.role !== "admin") {
-  //     return <Navigate to="/" />;
-  //   }
-
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
   return props.children;
 };

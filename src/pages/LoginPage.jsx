@@ -1,9 +1,46 @@
 import { EyeIcon } from "lucide-react";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: e.target.username.value,
+          password: e.target.password.value,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Login gagal");
+        return;
+      }
+
+      // simpan token ke localStorage
+      localStorage.setItem("token", data.token);
+
+      alert("Login berhasil!");
+      navigate("/admin/dashboard");
+    } catch (err) {
+      console.log(err);
+      setError("Terjadi kesalahan server");
+    }
+  };
+
   return (
     <Layout>
       <div className="container min-h-screen flex justify-center items-center">
@@ -11,7 +48,7 @@ const LoginPage = () => {
           <h2 className="text-2xl uppercase font-medium mb-1 text-center">
             Login
           </h2>
-          <form autoComplete="off">
+          <form method="POST" autoComplete="off" onSubmit={handleLogin}>
             <p className="text-red-500" />
             <div className="space-y-2">
               <div>
@@ -48,6 +85,7 @@ const LoginPage = () => {
               <Button type="submit" className="w-full">
                 Login
               </Button>
+              {error && <p style={{ color: "red" }}>{error}</p>}
               <div className="flex gap-2 pt-5">
                 <p className="text-primary text-sm">
                   Don't have an account yet?

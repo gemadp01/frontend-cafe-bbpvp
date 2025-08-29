@@ -10,7 +10,7 @@ const CreateProductPage = () => {
         <h2 className="text-3xl font-semibold mb-6  text-gray-800">
           Tambah Data Meja
         </h2>
-        <form action="#" method="POST">
+        <form method="POST" enctype="multipart/form-data">
           <div className="mb-5">
             <label
               htmlFor="productName"

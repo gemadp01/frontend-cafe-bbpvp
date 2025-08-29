@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
   Marker,
-  useMapEvents,
   Popup,
+  useMap,
+  useMapEvents,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Atur ikon default (supaya marker tampil normal)
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png",
@@ -20,37 +20,59 @@ L.Icon.Default.mergeOptions({
 
 const centerPosition = [-6.2, 106.816666]; // Jakarta
 
-function LocationMarker({ onSelect }) {
-  useMapEvents({
-    click(e) {
-      onSelect(e.latlng);
-    },
-  });
+// komponen untuk update center saat props coords berubah
+function ChangeView({ coords }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (coords) {
+      map.setView(coords, 15);
+    }
+  }, [coords, map]);
 
   return null;
 }
 
-const Map = () => {
+// komponen untuk handle klik map
+function LocationMarker({ onMapSelect }) {
+  const [markerPos, setMarkerPos] = useState(null);
+
+  useMapEvents({
+    async click(e) {
+      const latlng = e.latlng;
+      setMarkerPos(latlng);
+
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${latlng.lat}&lon=${latlng.lng}&format=json`
+        );
+        const data = await res.json();
+        const name = data.display_name || "Lokasi tidak ditemukan";
+
+        if (onMapSelect) {
+          onMapSelect(name, latlng); // kirim ke Register
+        }
+      } catch (err) {
+        console.error("Gagal fetch lokasi:", err);
+      }
+    },
+  });
+
+  return markerPos ? (
+    <Marker position={markerPos}>
+      <Popup>Kamu pilih lokasi ini</Popup>
+    </Marker>
+  ) : null;
+}
+
+const Map = ({ coords, onMapSelect }) => {
   const [position, setPosition] = useState(null);
-  const [placeName, setPlaceName] = useState("");
 
-  const handleMapClick = async (latlng) => {
-    setPosition(latlng);
-    setPlaceName("Mencari lokasi...");
-
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?lat=${latlng.lat}&lon=${latlng.lng}&format=json`
-      );
-      const data = await res.json();
-      const name = data.display_name || "Lokasi tidak ditemukan";
-      setPlaceName(name);
-      console.log("Lokasi:", name);
-    } catch (err) {
-      console.error("Gagal fetch lokasi:", err);
-      setPlaceName("Gagal mendapatkan lokasi");
+  useEffect(() => {
+    if (coords) {
+      setPosition(coords);
     }
-  };
+  }, [coords]);
 
   return (
     <MapContainer
@@ -63,11 +85,12 @@ const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <LocationMarker onSelect={handleMapClick} />
+      {coords && <ChangeView coords={coords} />}
+      <LocationMarker onMapSelect={onMapSelect} />
 
       {position && (
         <Marker position={position}>
-          <Popup>{placeName}</Popup>
+          <Popup>Lokasi hasil input</Popup>
         </Marker>
       )}
     </MapContainer>

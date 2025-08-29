@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -20,6 +20,7 @@ import EditListMejaPage from "./pages/admin/EditListMejaPage";
 
 function App() {
   const location = useLocation();
+  const token = localStorage.getItem("token");
 
   return (
     <>
@@ -30,8 +31,17 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/find-cafe/cafe-detail/:id" element={<CafeDetailPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+
+        <Route
+          path="/login"
+          element={token ? <Navigate to="/admin/dashboard" /> : <LoginPage />}
+        />
+        <Route
+          path="/register"
+          element={
+            token ? <Navigate to="/admin/dashboard" /> : <RegisterPage />
+          }
+        />
 
         <Route path="/admin">
           <Route path="dashboard" element={<DashboardPage />} />
