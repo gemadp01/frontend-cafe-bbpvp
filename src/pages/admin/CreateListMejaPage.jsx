@@ -1,8 +1,44 @@
+import { useNavigate } from "react-router-dom";
 import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import Button from "../../components/Button";
 
 const CreateListMejaPage = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      noMeja: e.target.noMeja.value,
+      status: e.target.status.value,
+      waktuPemesanan: e.target.waktuPemesanan.value,
+      note: e.target.note.value,
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/api/list-meja/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error("Gagal menambahkan data, status: " + res.status);
+      }
+
+      alert("Data berhasil ditambahkan!");
+      setTimeout(() => {
+        navigate("/admin/list-meja");
+      }, 2000);
+    } catch (err) {
+      alert("Terjadi error: " + err.message);
+    }
+  };
+
   return (
     <AdminLayout title="Create List Meja" description="Tambah List Meja Baru">
       <Breadcrumb />
@@ -10,7 +46,7 @@ const CreateListMejaPage = () => {
         <h2 className="text-3xl font-semibold mb-6  text-gray-800">
           Tambah Data Meja
         </h2>
-        <form action="#" method="POST">
+        <form method="POST" onSubmit={handleSubmit}>
           <div className="mb-5">
             <label
               htmlFor="noMeja"
@@ -59,14 +95,14 @@ const CreateListMejaPage = () => {
           </div>
           <div className="mb-5">
             <label
-              htmlFor="catatan"
+              htmlFor="note"
               className="block text-gray-700 font-medium mb-2"
             >
               Catatan
             </label>
             <textarea
-              name="catatan"
-              id="catatan"
+              name="note"
+              id="note"
               className="w-full px-4 py-3 border rounded-lg"
             ></textarea>
           </div>

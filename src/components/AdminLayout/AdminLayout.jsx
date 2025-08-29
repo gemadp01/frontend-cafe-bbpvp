@@ -6,7 +6,7 @@ import {
   UtensilsCrossedIcon,
 } from "lucide-react";
 import Button from "../Button";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AdminPage } from "../guard/AdminPage";
 // import clsx from "clsx";
 
