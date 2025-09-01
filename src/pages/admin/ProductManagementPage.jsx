@@ -6,19 +6,21 @@ import { useEffect, useState } from "react";
 
 const ProductManagementPage = () => {
   const [products, setProducts] = useState([]);
+  const token = localStorage.getItem("token");
 
   const fetchingDataProducts = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/products/user/login",
+        "http://localhost:3000/api/products/user/loggedin",
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       const data = await response.json();
+      console.log(data);
       setProducts(data);
     } catch (error) {
       console.error(error);
@@ -118,53 +120,64 @@ const ProductManagementPage = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {/* Row 1 */}
-                  {products.map((product) => (
-                    <>
-                      <tr className="hover:bg-gray-50 transition-colors duration-150">
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                {product.productName}
+                  {products !== null ? (
+                    products.map((product) => (
+                      <>
+                        <tr className="hover:bg-gray-50 transition-colors duration-150">
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="flex items-center">
+                              <div className="ml-4">
+                                <div className="text-sm font-medium text-gray-900">
+                                  {product.productName}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
-                            {product.productCategory}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
-                            Rp. {product.productPrice.toLocaleString("id-ID")}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {product.productQuantity}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            {product.productStatus}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a
-                            href="#"
-                            className="text-indigo-600 hover:text-indigo-900 mr-3"
-                          >
-                            Edit
-                          </a>
-                          <a
-                            href="#"
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Delete
-                          </a>
-                        </td>
-                      </tr>
-                    </>
-                  ))}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm text-gray-900">
+                              {product.productCategory}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm text-gray-900">
+                              Rp. {product.productPrice.toLocaleString("id-ID")}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {product.productQuantity}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                              {product.productStatus}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a
+                              href="#"
+                              className="text-indigo-600 hover:text-indigo-900 mr-3"
+                            >
+                              Edit
+                            </a>
+                            <a
+                              href="#"
+                              className="text-red-600 hover:text-red-900"
+                            >
+                              Delete
+                            </a>
+                          </td>
+                        </tr>
+                      </>
+                    ))
+                  ) : (
+                    <tr>
+                      <td
+                        colSpan="6"
+                        className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500"
+                      >
+                        Tidak ada data products.
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

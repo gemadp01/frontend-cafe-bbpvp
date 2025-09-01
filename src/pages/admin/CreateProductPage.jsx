@@ -34,7 +34,7 @@ const CreateProductPage = () => {
 
       alert("Data berhasil ditambahkan!");
       setTimeout(() => {
-        navigate("/admin/products");
+        navigate("/admin/products/user/loggedin");
       }, 2000);
     } catch (err) {
       alert("Terjadi error: " + err.message);
