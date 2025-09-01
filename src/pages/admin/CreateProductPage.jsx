@@ -9,17 +9,23 @@ const CreateProductPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      productName: e.target.productName.value,
-      productCategory: e.target.productCategory.value,
-      productPrice: e.target.productPrice.value,
-      productImage: e.target.productImage.files[0],
-      productQuantity: e.target.productQuantity.value,
-      productStatus: e.target.productStatus.value,
-    };
+    const formData = new FormData();
+    // const data = {
+    //   productName: e.target.productName.value,
+    //   productCategory: e.target.productCategory.value,
+    //   productPrice: e.target.productPrice.value,
+    //   productQuantity: e.target.productQuantity.value,
+    //   productStatus: e.target.productStatus.value,
+    // };
 
-    console.log(data);
-    return;
+    formData.append("productName", e.target.productName.value);
+    formData.append("productCategory", e.target.productCategory.value);
+    formData.append("productPrice", e.target.productPrice.value);
+    formData.append("productQuantity", e.target.productQuantity.value);
+    formData.append("productStatus", e.target.productStatus.value);
+    if (e.target.productImage.files.length > 0) {
+      formData.append("productImage", e.target.productImage.files[0]);
+    }
 
     try {
       const res = await fetch("http://localhost:3000/api/products/create", {
@@ -27,7 +33,7 @@ const CreateProductPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: data,
+        body: formData,
       });
 
       if (!res.ok) {

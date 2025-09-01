@@ -122,51 +122,69 @@ const ProductManagementPage = () => {
                   {/* Row 1 */}
                   {products !== null ? (
                     products.map((product) => (
-                      <>
-                        <tr className="hover:bg-gray-50 transition-colors duration-150">
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="flex items-center">
-                              <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900">
-                                  {product.productName}
-                                </div>
+                      <tr
+                        className="hover:bg-gray-50 transition-colors duration-150"
+                        key={product._id}
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="h-10 w-10 flex-shrink-0">
+                              <img
+                                className="h-10 w-10 rounded-full object-cover"
+                                src={
+                                  product.productImage
+                                    ? `http://localhost:3000/${product.productImage}`
+                                    : "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
+                                }
+                                alt="product"
+                              />
+                            </div>
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">
+                                {product.productName}
                               </div>
                             </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {product.productCategory}
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              Rp. {product.productPrice.toLocaleString("id-ID")}
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {product.productQuantity}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">
+                            {product.productCategory}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">
+                            Rp. {product.productPrice.toLocaleString("id-ID")}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {product.productQuantity}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {product.productStatus === "available" ? (
                             <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               {product.productStatus}
                             </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a
-                              href="#"
-                              className="text-indigo-600 hover:text-indigo-900 mr-3"
-                            >
-                              Edit
-                            </a>
-                            <a
-                              href="#"
-                              className="text-red-600 hover:text-red-900"
-                            >
-                              Delete
-                            </a>
-                          </td>
-                        </tr>
-                      </>
+                          ) : (
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                              {product.productStatus}
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <a
+                            href="#"
+                            className="text-indigo-600 hover:text-indigo-900 mr-3"
+                          >
+                            Edit
+                          </a>
+                          <a
+                            href="#"
+                            className="text-red-600 hover:text-red-900"
+                          >
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
                     ))
                   ) : (
                     <tr>
