@@ -27,6 +27,39 @@ const ProductManagementPage = () => {
     }
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const confirmDelete = confirm(
+      "Apakah Anda yakin ingin menghapus product ini?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const productId = e.target.productId.value;
+      const res = await fetch(
+        `http://localhost:3000/api/products/${productId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+      console.log(data);
+
+      if (res.ok) {
+        alert("Product berhasil dihapus!");
+        // update state supaya UI ikut berubah
+        setProducts((prev) => prev.filter((p) => p._id !== productId));
+      }
+    } catch (err) {
+      console.log("Error:", err);
+    }
+  };
+
   useEffect(() => {
     fetchingDataProducts();
   }, []);
@@ -177,12 +210,23 @@ const ProductManagementPage = () => {
                           >
                             Edit
                           </a>
-                          <a
-                            href="#"
-                            className="text-red-600 hover:text-red-900"
+                          <form
+                            method="POST"
+                            onSubmit={handleDelete}
+                            className="inline"
                           >
-                            Delete
-                          </a>
+                            <input
+                              type="hidden"
+                              name="productId"
+                              value={product._id}
+                            />
+                            <button
+                              type="submit"
+                              className="text-red-600 hover:text-red-900 cursor-pointer"
+                            >
+                              Delete
+                            </button>
+                          </form>
                         </td>
                       </tr>
                     ))
