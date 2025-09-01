@@ -13,19 +13,21 @@ const CreateProductPage = () => {
       productName: e.target.productName.value,
       productCategory: e.target.productCategory.value,
       productPrice: e.target.productPrice.value,
-      // productImage: e.target.productImage.files[0],
+      productImage: e.target.productImage.files[0],
       productQuantity: e.target.productQuantity.value,
       productStatus: e.target.productStatus.value,
     };
+
+    console.log(data);
+    return;
 
     try {
       const res = await fetch("http://localhost:3000/api/products/create", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data),
+        body: data,
       });
 
       if (!res.ok) {
@@ -50,7 +52,7 @@ const CreateProductPage = () => {
         </h2>
         <form
           method="POST"
-          // encType="multipart/form-data"
+          encType="multipart/form-data"
           onSubmit={handleSubmit}
         >
           <div className="mb-5">
@@ -115,7 +117,7 @@ const CreateProductPage = () => {
               placeholder="Masukkan harga produk"
             />
           </div>
-          {/* <div className="mb-5">
+          <div className="mb-5">
             <label
               htmlFor="productImage"
               className="block text-gray-700 font-medium mb-2"
@@ -128,7 +130,7 @@ const CreateProductPage = () => {
               name="productImage"
               className="w-full px-4 py-3 border rounded-lg"
             />
-          </div> */}
+          </div>
 
           <div className="mb-5">
             <label
