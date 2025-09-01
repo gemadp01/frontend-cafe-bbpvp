@@ -29,7 +29,11 @@ function App() {
         <Route path="/find-cafe" element={<FindCafePage />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/find-cafe/cafe-detail/:id" element={<CafeDetailPage />} />
+        {/* <Route path="/find-cafe/cafe-detail/:id" element={<CafeDetailPage />} /> */}
+        <Route
+          path="/find-cafe/cafe-detail/:userId"
+          element={<CafeDetailPage />}
+        />
 
         <Route
           path="/login"

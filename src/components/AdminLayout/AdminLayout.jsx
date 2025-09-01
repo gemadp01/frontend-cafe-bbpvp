@@ -9,7 +9,6 @@ import Button from "../Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AdminPage } from "../guard/AdminPage";
 import clsx from "clsx";
-import getUserIdFromToken from "../../utils/getUserIdFromToken";
 
 const navLinkClass = ({ isActive }) =>
   clsx(
