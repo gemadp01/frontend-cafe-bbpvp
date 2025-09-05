@@ -6,8 +6,6 @@ export const ProjectAccordion = ({ dataProducts, dataListMeja }) => {
   const [activeTab, setActiveTab] = useState("Products");
   const tabs = ["Products", "Ketersediaan meja"];
 
-  console.log(dataProducts);
-
   return (
     <>
       <div className="mb-8">
@@ -29,7 +27,7 @@ export const ProjectAccordion = ({ dataProducts, dataListMeja }) => {
         </div>
       </div>
 
-      {/* Product Grid */}
+      {/* Products */}
       {activeTab === "Products" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
           {dataProducts.length > 0 ? (
@@ -52,15 +50,7 @@ export const ProjectAccordion = ({ dataProducts, dataListMeja }) => {
       {/* Ketersediaan Meja */}
       {activeTab === "Ketersediaan meja" &&
         (dataListMeja.length > 0 ? (
-          dataListMeja.map((meja) => (
-            <CafeTable
-              key={meja._id}
-              noMeja={meja.noMeja}
-              waktuPemesanan={meja.waktuPemesanan}
-              note={meja.note}
-              status={meja.status}
-            />
-          ))
+          <CafeTable dataListMeja={dataListMeja} />
         ) : (
           <p className="text-gray-500">No data available.</p>
         ))}

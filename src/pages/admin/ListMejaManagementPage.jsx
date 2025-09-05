@@ -3,11 +3,34 @@ import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 const ListMejaManagementPage = () => {
   const [listMeja, setListMeja] = useState([]);
   // const { userId } = useParams();
   const token = localStorage.getItem("token");
+
+  const statusColor = (status) => {
+    const colors = {
+      available: "bg-green-100 text-green-800",
+      occupied: "bg-red-100 text-yellow-800",
+      reserved: "bg-red-100 text-yellow-800",
+      cleaning: "bg-yellow-100 text-yellow-800",
+    };
+
+    const colorClass = colors[status];
+
+    return (
+      <span
+        className={clsx(
+          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full",
+          colorClass
+        )}
+      >
+        {status}
+      </span>
+    );
+  };
 
   const fetchingDataListMeja = async () => {
     try {
@@ -124,13 +147,20 @@ const ListMejaManagementPage = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            {meja.status}
-                          </span>
+                          {statusColor(meja.status)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">
-                            {meja.waktuPemesanan}
+                            {new Date(meja.waktuPemesanan).toLocaleString(
+                              "id-ID",
+                              {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              }
+                            )}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">

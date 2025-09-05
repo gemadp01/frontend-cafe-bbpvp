@@ -44,7 +44,7 @@ function FindCafePage() {
             <form onSubmit={searchInput}>
               <input
                 type="text"
-                className="rounded-md p-3 w-full"
+                className="rounded-md p-3 w-full focus:outline-none"
                 placeholder="Cari berdasarkan nama cafe atau lokasi!"
                 id="search"
                 autoFocus
