@@ -1,21 +1,21 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import FindCafePage from "./pages/FindCafePage";
-import HomePage from "./pages/HomePage";
-import AboutUsPage from "./pages/AboutUsPage";
-import ContactPage from "./pages/ContactPage";
-import CafeDetailPage from "./pages/CafeDetailPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import DashboardPage from "./pages/admin/DashboardPage";
-import ProductManagementPage from "./pages/admin/ProductManagementPage";
-import CreateProductPage from "./pages/admin/CreateProductPage";
-import EditProductPage from "./pages/admin/EditProductPage";
-import ListMejaManagementPage from "./pages/admin/ListMejaManagementPage";
-import CreateListMejaPage from "./pages/admin/CreateListMejaPage";
-import EditListMejaPage from "./pages/admin/EditListMejaPage";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HomePage from "@/pages/HomePage";
+import FindCafePage from "@/pages/FindCafePage";
+import AboutUsPage from "@/pages/AboutUsPage";
+import ContactPage from "@/pages/ContactPage";
+import CafeDetailPage from "@/pages/CafeDetailPage";
+import LoginPage from "@/pages/LoginPage";
+import RegisterPage from "@/pages/RegisterPage";
+import DashboardPage from "@/pages/admin/DashboardPage";
+import ProductManagementPage from "@/pages/admin/ProductManagementPage";
+import CreateProductPage from "@/pages/admin/CreateProductPage";
+import EditProductPage from "@/pages/admin/EditProductPage";
+import ListMejaManagementPage from "@/pages/admin/ListMejaManagementPage";
+import CreateListMejaPage from "@/pages/admin/CreateListMejaPage";
+import EditListMejaPage from "@/pages/admin/EditListMejaPage";
 
 function App() {
   const location = useLocation();
@@ -69,6 +69,7 @@ function App() {
           />
         </Route>
 
+        {/* Route not Found */}
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
 
