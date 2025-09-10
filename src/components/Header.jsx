@@ -12,7 +12,7 @@ function Header() {
     clsx("text-gray-700", isActive && "text-primary font-bold");
 
   return (
-    <header className="shadow-2xl fixed top-0 left-0 right-0 h-24 bg-bgColor-1 flex p-4 items-center md:justify-center">
+    <header className="shadow-2xl fixed top-0 left-0 right-0 h-24 bg-bgColor-1 flex p-4 items-center md:justify-center z-10">
       <div className="w-full flex justify-between items-center md:w-7xl">
         <h1 className="text-xl font-semibold">Icon or Label</h1>
 
