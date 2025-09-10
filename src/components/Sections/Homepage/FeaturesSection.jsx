@@ -1,6 +1,4 @@
-import Badge from "@/components/Badge";
 import FeatureCard from "@/components/FeatureCard";
-import Layout from "@/components/Layout";
 import { Coffee, MapPin, Users } from "lucide-react";
 
 const FeaturesSection = () => {

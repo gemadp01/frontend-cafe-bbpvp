@@ -42,39 +42,75 @@ function Header() {
           </ul>
 
           {/* Hamburger (mobile) */}
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
+          <button
+            className="md:hidden cursor-pointer shadow-lg p-2 rounded-md"
+            onClick={() => setOpen(!open)}
+          >
             {!open ? <Menu /> : <X />}
           </button>
 
-          {open && (
-            <ul className="absolute top-16 left-0 w-full bg-gray-800 flex flex-col items-center gap-4 py-6 md:hidden">
-              <li>
-                <a href="#home" className="hover:text-gray-400">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-gray-400">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-gray-400">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          )}
+          {/* Menu */}
+          <ul
+            className={`absolute top-24 left-0 w-full right-0 bg-bgColor-1 flex flex-col items-center gap-4 py-6 px-10 md:hidden transition-all duration-300 ease-in-out ${
+              open
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-5 pointer-events-none"
+            }`}
+          >
+            <li>
+              <NavLink end to="/" className={navLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/find-cafe" className={navLinkClass}>
+                Find a Cafe
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className={navLinkClass}>
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className={navLinkClass}>
+                Contact
+              </NavLink>
+            </li>
+            <hr className="w-full" />
+            <li className="w-full">
+              <Button
+                color={location.pathname === "/login" ? "primary" : "secondary"}
+                width="full"
+                size="sm"
+              >
+                <Link to="/login">Login</Link>
+              </Button>
+            </li>
+            <li className="w-full">
+              <Button
+                color={
+                  location.pathname === "/register" ? "primary" : "secondary"
+                }
+                width="full"
+                size="sm"
+              >
+                <Link to="/register">Sign up</Link>
+              </Button>
+            </li>
+          </ul>
         </nav>
 
         <div className="hidden md:flex md:space-x-1">
           <Button
             color={location.pathname === "/login" ? "primary" : "secondary"}
+            size="sm"
           >
             <Link to="/login">Login</Link>
           </Button>
           <Button
             color={location.pathname === "/register" ? "primary" : "secondary"}
+            size="sm"
           >
             <Link to="/register">Sign up</Link>
           </Button>
