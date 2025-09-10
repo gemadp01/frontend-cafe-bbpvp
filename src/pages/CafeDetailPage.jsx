@@ -26,7 +26,6 @@ const CafeDetailPage = () => {
         `http://localhost:3000/api/products/${userId}`
       );
       const data = await response.json();
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.log(error);
@@ -38,7 +37,6 @@ const CafeDetailPage = () => {
         `http://localhost:3000/api/list-meja/${userId}`
       );
       const data = await response.json();
-      console.log(data);
       setListMeja(data);
     } catch (error) {
       console.log(error);

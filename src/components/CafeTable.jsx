@@ -1,12 +1,12 @@
 import clsx from "clsx";
 
-export const CafeTable = ({ noMeja, waktuPemesanan, note, status }) => {
+export const CafeTable = (props) => {
   const statusColor = (status) => {
     const colors = {
       available: "bg-green-100 text-green-800",
       occupied: "bg-red-100 text-yellow-800",
       reserved: "bg-red-100 text-yellow-800",
-      cleaning: "bg-red-100 text-red-800",
+      cleaning: "bg-yellow-100 text-yellow-800",
     };
 
     const colorClass = colors[status];
@@ -43,16 +43,22 @@ export const CafeTable = ({ noMeja, waktuPemesanan, note, status }) => {
           </tr>
         </thead>
         <tbody className="bg-white">
-          <tr>
-            <td className="py-4 px-6 border-b border-gray-200">{noMeja}</td>
-            <td className="py-4 px-6 border-b border-gray-200 truncate">
-              {waktuPemesanan}
-            </td>
-            <td className="py-4 px-6 border-b border-gray-200">{note}</td>
-            <td className="py-4 px-6 border-b border-gray-200">
-              {statusColor(status)}
-            </td>
-          </tr>
+          {props.dataListMeja.map((meja) => (
+            <tr key={meja._id}>
+              <td className="py-4 px-6 border-b border-gray-200">
+                {meja.noMeja}
+              </td>
+              <td className="py-4 px-6 border-b border-gray-200 truncate">
+                {meja.waktuPemesanan}
+              </td>
+              <td className="py-4 px-6 border-b border-gray-200">
+                {meja.note}
+              </td>
+              <td className="py-4 px-6 border-b border-gray-200">
+                {statusColor(meja.status)}
+              </td>
+            </tr>
+          ))}
           {/* Add more rows here */}
         </tbody>
       </table>
