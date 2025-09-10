@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
+import FeaturesSection from "@/components/Sections/Homepage/FeaturesSection";
 import HeroSection from "@/components/Sections/Homepage/HeroSection";
+import MissionSection from "@/components/Sections/Homepage/MissionSection";
 
 const HomePage = () => {
   return (
@@ -7,6 +9,8 @@ const HomePage = () => {
       <Layout>
         {/* New Layout */}
         <HeroSection />
+        <FeaturesSection />
+        <MissionSection />
 
         {/* Oldest Layout */}
         {/* <IntroSection /> */}

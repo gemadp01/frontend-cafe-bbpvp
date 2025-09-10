@@ -19,7 +19,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-lg text-gray-600 max-w-md mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg text-textColor-1 max-w-md mx-auto lg:mx-0 leading-relaxed">
               Temukan café favorit, lihat meja yang kosong, dan cek menu yang
               lagi ready, semua dari HP kamu.
             </p>

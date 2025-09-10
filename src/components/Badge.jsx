@@ -37,14 +37,15 @@ const iconSizes = {
 };
 
 const Badge = ({
+  className = "",
   color,
   size = "md",
   rounded,
-  Icon = Coffee,
+  icon: Icon = Coffee,
   text = "Find Your Perfect Cafe",
 }) => {
   return (
-    <div className={clsx(badgeVariants({ color, size, rounded }))}>
+    <div className={clsx(badgeVariants({ color, size, rounded }), className)}>
       {Icon && <Icon className={clsx(iconSizes[size])} />}
       <span className="font-medium">{text}</span>
     </div>
