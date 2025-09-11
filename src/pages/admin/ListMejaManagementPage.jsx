@@ -32,6 +32,33 @@ const ListMejaManagementPage = () => {
     );
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const confirmDelete = confirm(
+      "Apakah Anda yakin ingin menghapus meja ini?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const mejaId = e.target.mejaId.value;
+      const res = await fetch(`http://localhost:3000/api/list-meja/${mejaId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        alert("Meja berhasil dihapus!");
+        // update state supaya UI ikut berubah
+        setListMeja((prev) => prev.filter((p) => p._id !== mejaId));
+      }
+    } catch (err) {
+      console.log("Error:", err);
+    }
+  };
+
   const fetchingDataListMeja = async () => {
     try {
       const response = await fetch(
@@ -169,18 +196,32 @@ const ListMejaManagementPage = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a
-                            href="#"
+                          {/* Edit button */}
+                          <Link
+                            to={"/admin/edit/list-meja/" + meja._id}
                             className="text-indigo-600 hover:text-indigo-900 mr-3"
                           >
                             Edit
-                          </a>
-                          <a
-                            href="#"
-                            className="text-red-600 hover:text-red-900"
+                          </Link>
+
+                          {/* Delete button */}
+                          <form
+                            method="POST"
+                            onSubmit={handleDelete}
+                            className="inline"
                           >
-                            Delete
-                          </a>
+                            <input
+                              type="hidden"
+                              name="mejaId"
+                              value={meja._id}
+                            />
+                            <button
+                              type="submit"
+                              className="text-red-600 hover:text-red-900 cursor-pointer"
+                            >
+                              Delete
+                            </button>
+                          </form>
                         </td>
                       </tr>
                     ))

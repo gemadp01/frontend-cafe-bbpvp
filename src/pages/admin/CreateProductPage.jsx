@@ -51,7 +51,7 @@ const CreateProductPage = () => {
 
   return (
     <AdminLayout title="Create Product" description="Tambah Product Baru">
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <div className="bg-white p-10 rounded-lg shadow-lg w-full ">
         <h2 className="text-3xl font-semibold mb-6  text-gray-800">
           Tambah Data Meja

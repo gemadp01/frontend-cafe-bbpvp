@@ -94,7 +94,7 @@ function RegisterPage() {
 
   return (
     <Layout>
-      <div className="container min-h-screen my-50 flex justify-center items-center">
+      <div className="min-h-screen my-50 flex justify-center items-center">
         <div className="w-2xl mx-auto shadow px-6 py-7 rounded overflow-hidden">
           <h2 className="text-2xl uppercase font-medium mb-1 text-center">
             Register

@@ -67,17 +67,17 @@ export const AdminLayout = (props) => {
 
           <div className="flex flex-col items-center space-y-4 py-4">
             <SidebarItem end path="/admin/dashboard">
-              <LayoutDashboardIcon className="inline h-4 w-4 md:mr-3" />
+              <LayoutDashboardIcon className="inline h-4 w-4 md:mr-3 shrink-0" />
               <span className="hidden md:block">Dashboard</span>
             </SidebarItem>
 
             <SidebarItem path={`/admin/list-meja/user/loggedin`}>
-              <Table2Icon className="inline h-4 w-4 md:mr-3" />
+              <Table2Icon className="inline h-4 w-4 md:mr-3 shrink-0" />
               <span className="hidden md:block">Ketersediaan Meja</span>
             </SidebarItem>
 
             <SidebarItem path={`/admin/products/user/loggedin`}>
-              <UtensilsCrossedIcon className="inline h-4 w-4 md:mr-3" />
+              <UtensilsCrossedIcon className="inline h-4 w-4 md:mr-3 shrink-0" />
               <span className="hidden md:block">Products</span>
             </SidebarItem>
           </div>
