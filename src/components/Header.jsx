@@ -7,6 +7,7 @@ import clsx from "clsx";
 function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const token = localStorage.getItem("token") || null;
 
   const navLinkClass = ({ isActive }) =>
     clsx("text-gray-700", isActive && "text-primary font-bold");
@@ -81,42 +82,66 @@ function Header() {
               </NavLink>
             </li>
             <hr className="w-full" />
-            <li className="w-full">
-              <Button
-                color={location.pathname === "/login" ? "primary" : "secondary"}
-                width="full"
-                size="sm"
-              >
-                <Link to="/login">Login</Link>
-              </Button>
-            </li>
-            <li className="w-full">
-              <Button
-                color={
-                  location.pathname === "/register" ? "primary" : "secondary"
-                }
-                width="full"
-                size="sm"
-              >
-                <Link to="/register">Sign up</Link>
-              </Button>
-            </li>
+            {token ? (
+              <li>
+                <Link to="/admin/dashboard" className={navLinkClass}>
+                  Dashboard
+                </Link>
+              </li>
+            ) : (
+              <>
+                <li className="w-full">
+                  <Button
+                    color={
+                      location.pathname === "/login" ? "primary" : "secondary"
+                    }
+                    width="full"
+                    size="sm"
+                  >
+                    <Link to="/login">Login</Link>
+                  </Button>
+                </li>
+                <li className="w-full">
+                  <Button
+                    color={
+                      location.pathname === "/register"
+                        ? "primary"
+                        : "secondary"
+                    }
+                    width="full"
+                    size="sm"
+                  >
+                    <Link to="/register">Sign up</Link>
+                  </Button>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
 
         <div className="hidden md:flex md:space-x-1">
-          <Button
-            color={location.pathname === "/login" ? "primary" : "secondary"}
-            size="sm"
-          >
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button
-            color={location.pathname === "/register" ? "primary" : "secondary"}
-            size="sm"
-          >
-            <Link to="/register">Sign up</Link>
-          </Button>
+          {token ? (
+            <Link to="/admin/dashboard">
+              <Button size="sm">Dashboard</Button>
+            </Link>
+          ) : (
+            <>
+              <Button
+                color={location.pathname === "/login" ? "primary" : "secondary"}
+                size="sm"
+              >
+                <Link to="/login">Login</Link>
+              </Button>
+              <Button
+                color={
+                  location.pathname === "/register" ? "primary" : "secondary"
+                }
+                size="sm"
+              >
+                <Link to="/register">Sign up</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>

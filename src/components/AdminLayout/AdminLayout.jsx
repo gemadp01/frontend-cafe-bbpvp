@@ -6,7 +6,7 @@ import {
   UtensilsCrossedIcon,
 } from "lucide-react";
 import Button from "../Button";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AdminPage } from "../guard/AdminPage";
 import clsx from "clsx";
 import Swal from "sweetalert2";
@@ -58,7 +58,9 @@ export const AdminLayout = (props) => {
         {/* Sidebar */}
         <aside className="w-1/5 md:w-80 shadow h-screen bg-sidebar">
           <div className="h-16 flex-col flex items-center justify-center border-b border-textColor-1">
-            <h1 className="font-bold text-md md:text-3xl">Icon or Label</h1>
+            <h1 className="font-bold text-md md:text-3xl">
+              <Link to="/">CafeFinder</Link>
+            </h1>
           </div>
 
           <div className="pl-4 pt-4">
