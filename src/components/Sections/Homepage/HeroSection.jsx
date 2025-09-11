@@ -11,7 +11,7 @@ const HeroSection = () => {
           <div className="flex-1 space-y-6 text-center lg:text-left mb-12 lg:mb-0">
             <Badge />
 
-            <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-textColor-1 bg-clip-text text-transparent leading-tight">
               Discover Amazing
               <br />
               <span className="bg-gradient-to-r from-textColor-1 to-bgColor-2 bg-clip-text text-transparent">

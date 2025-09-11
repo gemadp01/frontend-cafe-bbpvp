@@ -1,12 +1,8 @@
 import { useParams, useLocation } from "react-router-dom";
 import Pagination from "../components/Pagination";
-import { ProductCard } from "../components/ProductCard";
 import { ProjectAccordion } from "../components/ProjectAccordion";
-import { useState, useEffect } from "react";
 
 const CafeDetailPage = () => {
-  const [products, setProducts] = useState([]);
-  const [listMeja, setListMeja] = useState([]);
   const { userId } = useParams();
   const location = useLocation();
   const { namaCafe, lokasiCafe, noTelp } = location.state || {};
@@ -19,34 +15,6 @@ const CafeDetailPage = () => {
   //   stock: "Stock",
   //   image: `https://via.placeholder.com/600x400/000000/FFFFFF?text=600+x+400`,
   // }));
-
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/products/${userId}`
-      );
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const fetchlistMeja = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/list-meja/${userId}`
-      );
-      const data = await response.json();
-      setListMeja(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    fetchlistMeja();
-  }, []);
 
   return (
     <div className="min-h-screen mt-30">
@@ -65,10 +33,7 @@ const CafeDetailPage = () => {
           </div>
         </div>
 
-        <ProjectAccordion dataProducts={products} dataListMeja={listMeja} />
-
-        {/* Pagination */}
-        <Pagination />
+        <ProjectAccordion userParam={userId} />
       </div>
     </div>
   );
