@@ -1,6 +1,7 @@
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 import { ArrowRight, Clock, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -25,11 +26,17 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button className="group" color="primary">
-                Explore Cafes
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button color="secondary">Learn More</Button>
+              <Link to="/find-cafe">
+                <Button className="group" color="primary" size="md">
+                  Explore Cafes
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button color="secondary" size="md">
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </div>
 
