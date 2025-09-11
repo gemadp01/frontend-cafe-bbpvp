@@ -198,7 +198,7 @@ const ListMejaManagementPage = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           {/* Edit button */}
                           <Link
-                            to={"/admin/edit/list-meja/" + meja._id}
+                            to={"/admin/list-meja/edit/" + meja._id}
                             className="text-indigo-600 hover:text-indigo-900 mr-3"
                           >
                             Edit

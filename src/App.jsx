@@ -63,7 +63,7 @@ function App() {
             element={<ListMejaManagementPage />}
           />
           <Route path="list-meja/create" element={<CreateListMejaPage />} />
-          <Route path="edit/list-meja/:mejaId" element={<EditListMejaPage />} />
+          <Route path="list-meja/edit/:mejaId" element={<EditListMejaPage />} />
         </Route>
 
         {/* Route not Found */}

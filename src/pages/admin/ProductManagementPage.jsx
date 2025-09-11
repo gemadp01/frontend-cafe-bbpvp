@@ -204,12 +204,12 @@ const ProductManagementPage = () => {
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/admin/products/edit/" + product._id}
                             className="text-indigo-600 hover:text-indigo-900 mr-3"
                           >
                             Edit
-                          </a>
+                          </Link>
                           <form
                             method="POST"
                             onSubmit={handleDelete}
