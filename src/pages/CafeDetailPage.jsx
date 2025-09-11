@@ -1,6 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
-import Pagination from "../components/Pagination";
 import { ProjectAccordion } from "../components/ProjectAccordion";
+import { Coffee } from "lucide-react";
 
 const CafeDetailPage = () => {
   const { userId } = useParams();
@@ -22,7 +22,9 @@ const CafeDetailPage = () => {
         {/* Cafe Info */}
         <div className="bg-white border border-gray-300 rounded-lg p-6 mb-8">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-orange-500 rounded-full"></div>
+            <div className="w-12 h-12 bg-bgColor-2 rounded-full flex-shrink-0 flex items-center justify-center">
+              <Coffee className="w-5 h-5 text-white" />
+            </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">
                 {namaCafe}
