@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HomePage from "@/pages/HomePage";
 import FindCafePage from "@/pages/FindCafePage";
-import AboutUsPage from "@/pages/AboutUsPage";
 import ContactPage from "@/pages/ContactPage";
 import CafeDetailPage from "@/pages/CafeDetailPage";
 import LoginPage from "@/pages/LoginPage";
@@ -16,6 +15,7 @@ import EditProductPage from "@/pages/admin/EditProductPage";
 import ListMejaManagementPage from "@/pages/admin/ListMejaManagementPage";
 import CreateListMejaPage from "@/pages/admin/CreateListMejaPage";
 import EditListMejaPage from "@/pages/admin/EditListMejaPage";
+import AboutMePage from "@/pages/AboutMePage";
 
 function App() {
   const location = useLocation();
@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/find-cafe" element={<FindCafePage />} />
-        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/about" element={<AboutMePage />} />
         <Route path="/contact" element={<ContactPage />} />
         {/* <Route path="/find-cafe/cafe-detail/:id" element={<CafeDetailPage />} /> */}
         <Route
