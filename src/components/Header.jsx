@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import Button from "./Button";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import clsx from "clsx";
@@ -14,7 +14,10 @@ function Header() {
   return (
     <header className="shadow-2xl fixed top-0 left-0 right-0 h-24 bg-bgColor-1 flex p-4 items-center md:justify-center z-10">
       <div className="w-full flex justify-between items-center md:w-7xl">
-        <h1 className="text-xl font-semibold">Icon or Label</h1>
+        <h1 className="text-xl font-semibold flex justify-center items-center gap-2">
+          <Search className="w-4 h-4" />
+          CafeFinder
+        </h1>
 
         <nav className="text-sm text-textColor-1">
           {/* Menu list (Desktop) */}
@@ -31,7 +34,7 @@ function Header() {
             </li>
             <li>
               <NavLink to="/about" className={navLinkClass}>
-                About us
+                About me
               </NavLink>
             </li>
             <li>
@@ -69,7 +72,7 @@ function Header() {
             </li>
             <li>
               <NavLink to="/about" className={navLinkClass}>
-                About
+                About me
               </NavLink>
             </li>
             <li>
