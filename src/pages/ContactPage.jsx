@@ -1,11 +1,15 @@
+import HeroSection from "@/components/Sections/Contact/HeroSection";
 import Layout from "../components/Layout";
+import ContactFormSection from "@/components/Sections/Contact/ContactFormSection";
 
 const ContactPage = () => {
   return (
     <Layout>
-      <div>
-        <h1>Contact</h1>
-      </div>
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Contact Form */}
+      <ContactFormSection />
     </Layout>
   );
 };
