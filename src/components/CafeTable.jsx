@@ -25,43 +25,44 @@ export const CafeTable = (props) => {
 
   return (
     <div className="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 mb-12">
-      <table className="w-full table-fixed">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
-              No Meja
-            </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
-              Waktu Pemesanan
-            </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
-              Catatan
-            </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
-              Status
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white">
-          {props.dataListMeja.map((meja) => (
-            <tr key={meja._id}>
-              <td className="py-4 px-6 border-b border-gray-200">
-                {meja.noMeja}
-              </td>
-              <td className="py-4 px-6 border-b border-gray-200 truncate">
-                {meja.waktuPemesanan}
-              </td>
-              <td className="py-4 px-6 border-b border-gray-200">
-                {meja.note}
-              </td>
-              <td className="py-4 px-6 border-b border-gray-200">
-                {statusColor(meja.status)}
-              </td>
+      <div className="overflow-x-auto">
+        <table className="min-w-[600px] w-full table-fixed">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
+                No Meja
+              </th>
+              <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
+                Waktu Pemesanan
+              </th>
+              <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
+                Catatan
+              </th>
+              <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">
+                Status
+              </th>
             </tr>
-          ))}
-          {/* Add more rows here */}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="bg-white">
+            {props.dataListMeja.map((meja) => (
+              <tr key={meja._id}>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {meja.noMeja}
+                </td>
+                <td className="py-4 px-6 border-b border-gray-200 truncate">
+                  {meja.waktuPemesanan}
+                </td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {meja.note}
+                </td>
+                <td className="py-4 px-6 border-b border-gray-200">
+                  {statusColor(meja.status)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

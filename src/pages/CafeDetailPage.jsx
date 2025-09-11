@@ -1,6 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
 import { ProjectAccordion } from "../components/ProjectAccordion";
-import { Coffee } from "lucide-react";
+import { Coffee, MapPin, Phone } from "lucide-react";
 
 const CafeDetailPage = () => {
   const { userId } = useParams();
@@ -21,16 +21,20 @@ const CafeDetailPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Cafe Info */}
         <div className="bg-white border border-gray-300 rounded-lg p-6 mb-8">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 flex-col md:flex-row">
             <div className="w-12 h-12 bg-bgColor-2 rounded-full flex-shrink-0 flex items-center justify-center">
               <Coffee className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900">
-                {namaCafe}
-              </h2>
-              <p className="text-gray-600">{lokasiCafe}</p>
-              <p className="text-gray-600">{noTelp}</p>
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold text-primary">{namaCafe}</h2>
+              <p className="text-gray-600 flex items-center">
+                <MapPin className="w-6 h-6 mr-2 shrink-0" />
+                {lokasiCafe}
+              </p>
+              <p className="text-gray-600 flex items-center">
+                <Phone className="w-6 h-6 mr-2 shrink-0" />
+                {noTelp}
+              </p>
             </div>
           </div>
         </div>
