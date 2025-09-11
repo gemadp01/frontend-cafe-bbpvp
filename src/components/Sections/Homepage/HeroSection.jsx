@@ -48,31 +48,23 @@ const HeroSection = () => {
 
               {/* Floating cards */}
               <div
-                className="absolute -top-4 -left-4 bg-white rounded-2xl p-4 shadow-xl animate-bounce"
+                className="absolute -top-4 -left-4 lg:left-5 bg-white rounded-2xl p-4 shadow-xl animate-bounce"
                 style={{ animationDuration: "3s" }}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-bgColor-2 rounded-full flex items-center justify-center">
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-sm">Nearby</div>
-                    {/* <div className="text-xs text-gray-600">2.3 km</div> */}
-                  </div>
                 </div>
               </div>
 
               <div
-                className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl animate-bounce"
+                className="absolute -bottom-4 -right-4 lg:right-5 bg-white rounded-2xl p-4 shadow-xl animate-bounce"
                 style={{ animationDuration: "3s", animationDelay: "1s" }}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-bgColor-2 rounded-full flex items-center justify-center">
                     <Clock className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm">Open</div>
-                    {/* <div className="text-xs text-gray-600">until 10 PM</div> */}
                   </div>
                 </div>
               </div>
