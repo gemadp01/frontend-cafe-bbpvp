@@ -9,6 +9,7 @@ import Button from "../Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AdminPage } from "../guard/AdminPage";
 import clsx from "clsx";
+import Swal from "sweetalert2";
 
 const navLinkClass = ({ isActive }) =>
   clsx(
@@ -36,8 +37,19 @@ export const AdminLayout = (props) => {
 
     localStorage.removeItem("token");
 
-    alert("Logout berhasil!");
-    navigate("/login");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Logout successful!",
+    }).then(() => {
+      navigate("/login");
+    });
   };
 
   return (

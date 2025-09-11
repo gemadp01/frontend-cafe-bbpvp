@@ -4,12 +4,14 @@ import Map from "../components/Map";
 import Layout from "../components/Layout";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function RegisterPage() {
   const [location, setLocation] = useState(""); // alamat text
   const [coords, setCoords] = useState(null); // koordinat
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState({});
 
   const togglePassword = () => setShowPassword(!showPassword);
 
@@ -54,7 +56,7 @@ function RegisterPage() {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,14 +64,28 @@ function RegisterPage() {
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) {
-        throw new Error("Request gagal, status: " + res.status);
+      const result = await response.json();
+
+      console.log(result);
+
+      if (!response.ok) {
+        setError(result || "Request gagal, status: " + response.status);
+        return;
       }
 
-      alert("Data berhasil dikirim!");
-      setTimeout(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "The registration was successful!",
+      }).then(() => {
         navigate("/login");
-      }, 2000);
+      });
     } catch (err) {
       console.error("Error:", err);
       alert("Terjadi error: " + err.message);
@@ -96,7 +112,15 @@ function RegisterPage() {
                   className="block w-full border border-gray-300 px-4 py-3 text-primary text-sm rounded focus:ring-0 focus:border-teal-500 placeholder-gray-400"
                   placeholder="Masukkan Username"
                   required
+                  onChange={(e) => {
+                    e.target.value !== error.message && setError({});
+                  }}
                 />
+                {error.field === "username" && (
+                  <p style={{ color: "red", fontWeight: "bold" }}>
+                    {error.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="space-y-2">
@@ -132,8 +156,16 @@ function RegisterPage() {
                   className="block w-full border border-gray-300 px-4 py-3 text-primary text-sm rounded focus:ring-0 focus:border-teal-500 placeholder-gray-400"
                   placeholder="Masukkan email"
                   required
+                  onChange={(e) => {
+                    e.target.value !== error.message && setError({});
+                  }}
                 />
               </div>
+              {error.field === "email" && (
+                <p style={{ color: "red", fontWeight: "bold" }}>
+                  {error.message}
+                </p>
+              )}
             </div>
             <div className="space-y-2">
               <div>
@@ -146,7 +178,15 @@ function RegisterPage() {
                   className="block w-full border border-gray-300 px-4 py-3 text-primary text-sm rounded focus:ring-0 focus:border-teal-500 placeholder-gray-400"
                   placeholder="Masukkan Nama Cafe"
                   required
+                  onChange={(e) => {
+                    e.target.value !== error.message && setError({});
+                  }}
                 />
+                {error.field === "namaCafe" && (
+                  <p style={{ color: "red", fontWeight: "bold" }}>
+                    {error.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="space-y-2">

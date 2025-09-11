@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -36,11 +37,21 @@ const LoginPage = () => {
       // simpan token ke localStorage
       localStorage.setItem("token", data.token);
 
-      alert("Login berhasil!");
-      navigate("/admin/dashboard");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      }).then(() => {
+        navigate("/admin/dashboard");
+      });
     } catch (err) {
-      console.log(err);
-      setError("Terjadi kesalahan server");
+      setError("Terjadi kesalahan server", err.message);
     }
   };
 
@@ -91,7 +102,9 @@ const LoginPage = () => {
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              {error && <p style={{ color: "red" }}>{error}</p>}
+              {error && (
+                <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
+              )}
               <div className="flex gap-2 pt-5">
                 <p className="text-primary text-sm">
                   Don't have an account yet?
