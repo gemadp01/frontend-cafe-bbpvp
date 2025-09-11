@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import Button from "../../components/Button";
+import Swal from "sweetalert2";
 
 const CreateProductPage = () => {
   const navigate = useNavigate();
@@ -40,10 +41,19 @@ const CreateProductPage = () => {
         throw new Error("Gagal menambahkan data, status: " + res.status);
       }
 
-      alert("Data berhasil ditambahkan!");
-      setTimeout(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Data product berhasil ditambahkan!",
+      }).then(() => {
         navigate("/admin/products/user/loggedin");
-      }, 2000);
+      });
     } catch (err) {
       alert("Terjadi error: " + err.message);
     }

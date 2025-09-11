@@ -98,7 +98,6 @@ const EditListMejaPage = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // const result = await response.json();
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",

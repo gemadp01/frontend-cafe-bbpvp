@@ -3,6 +3,7 @@ import { AdminLayout } from "../../components/AdminLayout/AdminLayout";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import Button from "../../components/Button";
 import { useState } from "react";
+import Swal from "sweetalert2";
 // import getUserIdFromToken from "../../utils/getUserIdFromToken";
 
 const CreateListMejaPage = () => {
@@ -35,10 +36,19 @@ const CreateListMejaPage = () => {
         throw new Error("Gagal menambahkan data, status: " + res.status);
       }
 
-      alert("Data berhasil ditambahkan!");
-      setTimeout(() => {
-        navigate(`/admin/list-meja/user/loggedin`);
-      }, 2000);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Data meja berhasil ditambahkan!",
+      }).then(() => {
+        navigate("/admin/list-meja/user/loggedin");
+      });
     } catch (err) {
       alert("Terjadi error: " + err.message);
     } finally {
