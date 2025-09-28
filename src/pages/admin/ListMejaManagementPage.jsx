@@ -178,16 +178,13 @@ const ListMejaManagementPage = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">
-                            {new Date(meja.waktuPemesanan).toLocaleString(
-                              "id-ID",
-                              {
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              }
-                            )}
+                            {meja.waktuPemesanan.toLocaleString("id-ID", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
