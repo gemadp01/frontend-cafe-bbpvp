@@ -1,12 +1,62 @@
-# React + Vite
+# Cafe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sebuah aplikasi web yang memudahkan pelanggan mencari cafe sekaligus membantu pemilik cafe mengelola ketersediaan meja dan produk.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Cafe Search  
+    - Users can search for cafes by name or location.
 
-## Expanding the ESLint configuration
+- Cafe Details  
+Displays detailed information about the cafe, including:  
+    - Table availability (number of available/occupied tables)  
+    - Product list (available food and drink menu)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Cafe Management  
+Admins or cafe owners can manage:  
+    - Table availability (update table status: available/occupied)  
+    - Products/menu (add, edit, delete products)
+
+## Built with
+
+- MongoDB (Mongoose v8.18.0)
+- ExpressJS v5.1.0
+- React v19.0.0
+- NodeJS v22.17.0
+
+## Design Prototype
+[figma](https://www.figma.com/design/9xdtiurKDJnKsZB270lMcS/cafe-prototype?m=auto&t=Aoa55YHK1BmHFYV7-1)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone (https://github.com/gemadp01/frontend-cafe-bbpvp.git)
+```
+
+Go to the project directory
+
+```bash
+  cd frontend-cafe-bbpvp
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the client
+```bash
+  npm run dev
+```
+
+## Here to Contribute ✨
+
+Contributions are always welcome!   
+[Backend](https://github.com/gemadp01/backend-cafe-bbpvp)
+
+## Authors
+
+- [@gemadp01](https://www.github.com/gemadp01)
